@@ -11,6 +11,11 @@ GitHub Pages: <https://calgary007.github.io/Realty_Landing_Page/>
 - `index.html` — the landing page (styles and small scripts are inline)
 - `assets/` — business card front, portrait, property.ca logos, favicon
 
+## Content sources
+
+- Contact details and business card front: Farhan Iqbal's business card and Property.ca Inc., Brokerage.
+- Client testimonials: Farhan Iqbal's public [Condos.ca profile](https://condos.ca/condo-pros/farhan-iqbal). The eight testimonials are reproduced there and labelled as Condos.ca testimonials on the page.
+
 ## Local preview
 
 ```powershell

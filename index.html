@@ -25,6 +25,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,400&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/farhan-iqbal-business-card-front.webp" type="image/webp">
+  <noscript>
+    <style>[data-testimonial][hidden] { display: flex !important; }</style>
+  </noscript>
 
   <script type="application/ld+json">
   {
@@ -93,6 +96,8 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; }
+
+    [hidden] { display: none !important; }
 
     html {
       scroll-behavior: smooth;
@@ -912,6 +917,160 @@
       line-height: 1.7;
     }
 
+    /* ---------- Testimonials ---------- */
+
+    .testimonials { background: #fff; }
+
+    .testimonial-link {
+      color: var(--pink-ink);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .testimonial-link:hover { color: var(--navy); }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      align-items: stretch;
+      gap: 18px;
+    }
+
+    .testimonial-grid.is-two {
+      grid-template-columns: repeat(2, minmax(0, 390px));
+      justify-content: center;
+    }
+
+    .testimonial-card {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 26px 24px 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--paper);
+    }
+
+    .testimonial-card::before {
+      content: "“";
+      display: block;
+      height: 32px;
+      color: var(--pink);
+      font-family: var(--font-serif);
+      font-size: 54px;
+      font-style: italic;
+      line-height: .78;
+    }
+
+    .testimonial-card blockquote {
+      flex: 1;
+      margin: 10px 0 22px;
+    }
+
+    .testimonial-card blockquote p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .testimonial-card blockquote p + p { margin-top: 12px; }
+
+    .testimonial-card figcaption {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .testimonial-avatar {
+      display: grid;
+      place-items: center;
+      flex: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .testimonial-meta strong {
+      display: block;
+      color: var(--ink);
+      font-size: 12.5px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .testimonial-meta span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 8.5px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .testimonial-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    .page-arrow {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+      color: var(--navy);
+      cursor: pointer;
+      transition: background .2s ease, border-color .2s ease, color .2s ease;
+    }
+    .page-arrow svg { width: 15px; height: 15px; }
+    .page-arrow:hover:not(:disabled) { border-color: var(--navy); background: var(--navy); color: #fff; }
+    .page-arrow:disabled { opacity: .3; cursor: not-allowed; }
+
+    .page-numbers { display: flex; align-items: center; gap: 4px; }
+
+    .page-number {
+      min-width: 38px;
+      height: 38px;
+      padding: 0 10px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease;
+    }
+    .page-number:hover { background: var(--paper); color: var(--ink); }
+    .page-number[aria-current="page"] { background: var(--navy); color: #fff; }
+
+    .testimonial-status {
+      flex-basis: 100%;
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
     /* ---------- Contact ---------- */
 
     .contact { background: var(--paper); }
@@ -1288,6 +1447,7 @@
       .section-head { margin-bottom: 34px; }
       .credentials { grid-template-columns: 1fr; }
       .credential:first-child { grid-column: auto; }
+      .testimonial-grid.is-two { grid-template-columns: 1fr; }
       .contact-method {
         grid-template-columns: 1fr 24px;
         gap: 4px 16px;
@@ -1345,6 +1505,7 @@
       <nav class="site-nav" id="site-nav" aria-label="Main navigation">
         <a href="#about">About</a>
         <a href="#services">Services</a>
+        <a href="#testimonials">Reviews</a>
         <a href="#contact">Contact</a>
         <a class="nav-phone" href="tel:+14168362103">Call 416 836 2103</a>
       </nav>
@@ -1534,6 +1695,113 @@
       </div>
     </section>
 
+    <section class="section testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow eyebrow-dark"><span class="eyebrow-dot" aria-hidden="true"></span> Client testimonials</p>
+            <h2>In their words.</h2>
+          </div>
+          <p class="section-intro">Real feedback from clients Farhan has helped with rentals, purchases, and relocations in Toronto. These eight testimonials are reproduced from his <a class="testimonial-link" href="https://condos.ca/condo-pros/farhan-iqbal" target="_blank" rel="noopener">Condos.ca profile ↗</a>.</p>
+        </div>
+
+        <div class="testimonial-grid">
+          <figure class="testimonial-card" data-testimonial>
+            <blockquote>
+              <p>I was looking for an apt to rent for my daughter’s co-op term in Ontario. Farhan Iqbal was amazing and was so efficient. I appreciate his insight and professionalism. I credit this perfect match to his quick efforts and his networking. Thanks so much.</p>
+            </blockquote>
+            <figcaption>
+              <span class="testimonial-avatar" aria-hidden="true">EL</span>
+              <span class="testimonial-meta"><strong>Elaine Lam</strong><span>Condos.ca client testimonial</span></span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card" data-testimonial>
+            <blockquote>
+              <p>I had been searching for months without much luck, but everything changed when I connected with Farhan Iqbal. He worked with me so quickly and found the perfect condo that checked all my boxes. Even after I secured the apartment, he continued to be incredibly helpful, answering all my questions and making sure I was comfortable. His communication was top-notch, and I felt supported every step of the way. I can’t recommend Farhan Iqbal enough—he made the whole process so much easier.</p>
+            </blockquote>
+            <figcaption>
+              <span class="testimonial-avatar" aria-hidden="true">PE</span>
+              <span class="testimonial-meta"><strong>Princes Elizabeth</strong><span>Condos.ca client testimonial</span></span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card" data-testimonial>
+            <blockquote>
+              <p>Mr. Farhan Iqbal was an exceptional agent. I had a lot of anxiety about finding a place in Toronto, but he was reassuring, kind and patient throughout the entire process. Thanks to him I found a place within my budget in my dream location. The entire process was seamless and easy thanks to him. 10/10 would recommend condos.ca and Mr. Farhan as your agent!</p>
+            </blockquote>
+            <figcaption>
+              <span class="testimonial-avatar" aria-hidden="true">JK</span>
+              <span class="testimonial-meta"><strong>Jasmine Kadiri</strong><span>Condos.ca client testimonial</span></span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card" data-testimonial hidden>
+            <blockquote>
+              <p>I recently had an exceptional experience working with Farhan Iqbal to secure a rental condo unit from overseas. Farhan went the extra mile by arranging virtual viewings on short notice, which was crucial for us given the time difference and distance. Virtual viewing through zoom call allowed us to assess the property remotely. His professionalism, responsiveness, and willingness to accommodate our needs made a significant difference. His dedication, prompt communication, and attention to detail made the process remarkably smooth and efficient. Thanks to his efforts, we secured a fantastic unit quickly and with minimal hassle. I highly recommend Farhan Iqbal for anyone needing a reliable and resourceful realtor.</p>
+            </blockquote>
+            <figcaption>
+              <span class="testimonial-avatar" aria-hidden="true">PP</span>
+              <span class="testimonial-meta"><strong>Priya Praveen</strong><span>Condos.ca client testimonial</span></span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card" data-testimonial hidden>
+            <blockquote>
+              <p>I would recommend Mr. Farhan Iqbal to anyone looking for a smooth experience in finding a condo of their choice. We had been trying for a month to find a condo of our choice. Mr. Farhan made the process so easy with his expertise and professionalism. He treats his clients with great sincerity, trying to meet their biggest to smallest needs. I would highly recommend Mr. Farhan Iqbal.</p>
+            </blockquote>
+            <figcaption>
+              <span class="testimonial-avatar" aria-hidden="true">LH</span>
+              <span class="testimonial-meta"><strong>Laura Hemington</strong><span>Condos.ca client testimonial</span></span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card" data-testimonial hidden>
+            <blockquote>
+              <p>I had a wonderful experience working with Mr. Farhan Iqbal. After searching for a 2-bedroom condo for over a month, things became much easier once we connected with him. Farhan consistently provided listings that matched our preferences, arranged multiple showings, and negotiated a great deal on our behalf. Finding a home in Toronto can be extremely challenging, but with his expertise, the process went smoothly. I highly recommend him for anyone looking to buy a property in the area.</p>
+              <p>Thank you, Farhan!</p>
+            </blockquote>
+            <figcaption>
+              <span class="testimonial-avatar" aria-hidden="true">VG</span>
+              <span class="testimonial-meta"><strong>Vidhi Gandhi</strong><span>Condos.ca client testimonial</span></span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card" data-testimonial hidden>
+            <blockquote>
+              <p>Awesome! Condos Professional Agent, Farhan Iqbal, at all times was there for us. We are in Singapore to quickly find a Toronto place remotely since we are unable to travel yet. Farhan travel to all our preferred selections on our behalf and with his meta spec showed us virtual showings of actual conditions; highlight instantly the plus and minus; guided us on the process and negotiated a good deal etc. Plus, reminded us on the post agreement essentials like tenant insurance, furniture and set-up utilities account. He was always responsive day and night. All the LL was glad, he is helpful to all parties to make all successful.</p>
+            </blockquote>
+            <figcaption>
+              <span class="testimonial-avatar" aria-hidden="true">JL</span>
+              <span class="testimonial-meta"><strong>John Lim</strong><span>Condos.ca client testimonial</span></span>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card" data-testimonial hidden>
+            <blockquote>
+              <p>Farhan Iqbal acted as the agent for my search of a new apartment I was looking to move in.</p>
+              <p>Farhan expertise, patience, and dedication made the entire process seamless. He listened to my needs, provided guidance. I highly recommend Farhan Iqbal for any real estate needs. 5 stars and well deserved!</p>
+            </blockquote>
+            <figcaption>
+              <span class="testimonial-avatar" aria-hidden="true">SS</span>
+              <span class="testimonial-meta"><strong>Salome Saa</strong><span>Condos.ca client testimonial</span></span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <nav class="testimonial-pagination" id="testimonial-pagination" aria-label="Client testimonial pages" hidden>
+          <button class="page-arrow" type="button" data-page-prev aria-label="Previous testimonials">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="page-numbers" data-page-numbers role="group" aria-label="Choose a testimonial page"></div>
+          <button class="page-arrow" type="button" data-page-next aria-label="Next testimonials">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <p class="testimonial-status" id="testimonial-status" aria-live="polite"></p>
+        </nav>
+      </div>
+    </section>
+
     <section class="section contact" id="contact">
       <div class="container contact-grid">
         <div class="contact-copy">
@@ -1587,6 +1855,7 @@
         <nav class="footer-links" aria-label="Footer navigation">
           <a href="#about">About</a>
           <a href="#services">Services</a>
+          <a href="#testimonials">Reviews</a>
           <a href="#contact">Contact</a>
           <a href="https://property.ca" target="_blank" rel="noopener">property.ca ↗</a>
           <a href="https://condos.ca" target="_blank" rel="noopener">condos.ca ↗</a>
@@ -1649,6 +1918,78 @@
         dialog.addEventListener("click", function (event) {
           if (event.target === dialog) dialog.close();
         });
+      }
+
+      var testimonialCards = Array.prototype.slice.call(document.querySelectorAll("[data-testimonial]"));
+      var pagination = document.getElementById("testimonial-pagination");
+
+      if (testimonialCards.length && pagination) {
+        var perPage = 3;
+        var currentPage = 1;
+        var totalPages = Math.ceil(testimonialCards.length / perPage);
+        var pageNumbers = pagination.querySelector("[data-page-numbers]");
+        var prevButton = pagination.querySelector("[data-page-prev]");
+        var nextButton = pagination.querySelector("[data-page-next]");
+        var status = document.getElementById("testimonial-status");
+        var testimonialGrid = document.querySelector(".testimonial-grid");
+        var pageButtons = [];
+
+        function renderTestimonials() {
+          testimonialCards.forEach(function (card, index) {
+            card.hidden = index < (currentPage - 1) * perPage || index >= currentPage * perPage;
+          });
+
+          var visibleCount = Math.min(perPage, testimonialCards.length - (currentPage - 1) * perPage);
+          testimonialGrid.classList.toggle("is-two", visibleCount === 2);
+
+          pageButtons.forEach(function (button, index) {
+            if (index + 1 === currentPage) {
+              button.setAttribute("aria-current", "page");
+            } else {
+              button.removeAttribute("aria-current");
+            }
+          });
+
+          prevButton.disabled = currentPage === 1;
+          nextButton.disabled = currentPage === totalPages;
+
+          var start = (currentPage - 1) * perPage + 1;
+          var end = Math.min(currentPage * perPage, testimonialCards.length);
+          status.textContent = "Showing " + start + "–" + end + " of " + testimonialCards.length + " testimonials";
+        }
+
+        for (var page = 1; page <= totalPages; page++) {
+          (function (pageNumber) {
+            var button = document.createElement("button");
+            button.type = "button";
+            button.className = "page-number";
+            button.textContent = pageNumber;
+            button.setAttribute("aria-label", "Page " + pageNumber);
+            button.addEventListener("click", function () {
+              currentPage = pageNumber;
+              renderTestimonials();
+            });
+            pageNumbers.appendChild(button);
+            pageButtons.push(button);
+          })(page);
+        }
+
+        prevButton.addEventListener("click", function () {
+          if (currentPage > 1) {
+            currentPage--;
+            renderTestimonials();
+          }
+        });
+
+        nextButton.addEventListener("click", function () {
+          if (currentPage < totalPages) {
+            currentPage++;
+            renderTestimonials();
+          }
+        });
+
+        pagination.hidden = false;
+        renderTestimonials();
       }
 
       document.getElementById("year").textContent = new Date().getFullYear();
